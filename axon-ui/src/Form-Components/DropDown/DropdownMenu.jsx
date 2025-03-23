@@ -8,7 +8,6 @@ export default function DropdownMenu({
   placeholder = "Input text", 
   onChange,
   className = "",
-  optionClassName = "",
   showIcons = true,
   customUserIcon,
   customCheckIcon,
@@ -38,7 +37,7 @@ export default function DropdownMenu({
   const CheckIcon = customCheckIcon || CircleCheck
 
   return (
-    <div className={`${styles.container}${className}`} ref={dropdownRef}>
+    <div className={`${styles.container} ${className}`} ref={dropdownRef}>
       {label && <label className={styles.label}>{label}</label>}
       <div onClick={() => setIsOpen(!isOpen)} className={styles.trigger}>
         <span className={selectedOption ? styles.selectedContent : styles.placeholder}>
@@ -71,4 +70,6 @@ export default function DropdownMenu({
     </div>
   )
 }
+
+
 

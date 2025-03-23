@@ -1,31 +1,51 @@
-import DropdownMenu from "./DropDownMenu"
-import { User, CircleCheck} from "lucide-react"
+
+import { User, CircleCheck } from "lucide-react"
+import PropTypes from "prop-types";
+import DropdownMenu from "./DropdownMenu";
 
 
-export default function DropDown(){
-    const options = [
-        "Placeholder",
-        "Placeholder",
-        "Placeholder",
-        "Placeholder",
-        "Placeholder"
-      ]
+export default function DropDown({
+  label="Label", 
+  placeholder="Input text", 
+  options=[
+    "Placeholder",
+    "Placeholder",
+    "Placeholder",
+    "Placeholder",
+    "Placeholder"
+  ], 
+  onChange = (option) => console.log("Selected:", option), 
+  showIcons = true, 
+  customCheckIcon = CircleCheck, 
+  customUserIcon = User }){
+
     
-      const handleChange = ()=> {
-        console.log("Selected:, options")
-      }
 
     return(
         <div>
             <DropdownMenu 
-            label="label" 
-            placeholder="Input text"  
+            label={label}
+            placeholder={placeholder}
             options={options} 
-            onChange={handleChange}
-            showIcons={true}
-            customUserIcon={User}
-            customCheckIcon={CircleCheck}
+            onChange={onChange}
+            showIcons={showIcons}
+            customUserIcon={customUserIcon}
+            customCheckIcon={customCheckIcon}
             />
+            
+          
+
         </div>
     )
 }
+
+DropDown.propTypes = {
+  label: PropTypes.string,
+  placeholder: PropTypes.string,
+  options: PropTypes.array,
+  onChange: PropTypes.func,
+  showIcons: PropTypes.bool,
+  customUserIcon: PropTypes.elementType,
+  customCheckIcon: PropTypes.elementType
+};
+
